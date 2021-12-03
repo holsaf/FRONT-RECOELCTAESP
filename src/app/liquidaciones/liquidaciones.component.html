@@ -1,0 +1,35 @@
+<div class="container liquidaciones">
+    <div class="form">
+        <h1>MODULO DE INGRESO</h1>
+        <form [formGroup]="liquidacionesForm" (ngSubmit)="onSubmit()">
+            <label>NIT Empresa</label>
+            <mat-form-field appearance="fill">
+                <mat-label>NIT Empresa</mat-label>
+                <input matInput id="nit" type="text" formControlName="nit" maxlength="10">
+                <mat-error *ngIf="liquidacionesForm.get('nit')?.invalid">
+                    <!--Validaciones-->
+                    {{nitErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Mes a Liquidar</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Mes a liquidar</mat-label>
+                <mat-select  name="mesSeleccion" [formControl]= "mesSeleccion" >
+                    <mat-option [value]="mesSeleccion"  *ngFor="let mes of mesesLiquidar">{{mes}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <label>Año a Liquidar</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Año a liquidar</mat-label>
+                <mat-select name="añoSeleccion" [formControl]= "yearSeleccion">
+                    <mat-option [value]="yearSeleccion"  *ngFor="let year of yearsLiquidar">{{year}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <br>
+            <a class="button secondary rounded">Liquidar</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container conductores">
+    <div class="form">
+        <h1 class="form title">Modulo de Conductores</h1>
+        <form [formGroup]="conductoresForm" (ngSubmit)="solicitarCelda()">
+            <label>Cedula del Condutor</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Cedula del Condutor</mat-label>
+                <input matInput id="cedula" type="text" formControlName="cedula" maxlength="12">
+                <mat-error *ngIf="conductoresForm.get('cedula')?.invalid"> <!--Validaciones-->
+                    {{cedulaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Placa Vehiculo</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Placa Vehiculo</mat-label>
+                <input matInput id="placa" type="text" formControlName="placa" maxlength="8">
+                <mat-error *ngIf="conductoresForm.get('placa')?.invalid"> <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Peso Bascula (Kg)</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Peso Bascula</mat-label>
+                <input matInput id="peso" type="number" formControlName="peso" maxlength="6" >
+                <mat-error *ngIf="conductoresForm.get('peso')?.invalid"> <!--Validaciones-->
+                    {{pesoErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Tipo de Residuo</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Selecione el tipo de Residuo</mat-label>
+                <mat-select name="tipoResiduo" formControlName= "tipoResiduo" >
+                    <mat-option  [value]="residuo"  *ngFor="let residuo of listaTipoResiduos" >{{residuo}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <button type="submit" [disabled]="!conductoresForm.valid" class="button secondary rounded">
+                Registrar
+            </button>
+        </form>
+    </div>
+
+</div>

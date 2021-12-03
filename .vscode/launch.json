@@ -1,0 +1,29 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Launch localhost",
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "url": "http://localhost:4200",
+            "pathMappings": [{
+                "url": "http://localhost",
+                "path": "${workspaceFolder}"
+            }]
+        },
+
+        {
+            "type": "devtools-for-chrome",
+            "request": "launch",
+            "name": "Launch Chrome DevTools",
+            "file": "${workspaceFolder}/index.html"
+        },
+        {
+            "type": "devtools-for-chrome",
+            "request": "attach",
+            "name": "Attach Chrome DevTools",
+            "url": "http://localhost:4200/"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.sg{
+    background: #FFD439;
+    height: auto;
+}
+
+.title{
+  font-family: Roboto Condensed;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: normal;
+  line-height: 75px;
+  text-align: center;
+  font-style: normal;
+  text-shadow: opx 4px 4px;;
+  
+}

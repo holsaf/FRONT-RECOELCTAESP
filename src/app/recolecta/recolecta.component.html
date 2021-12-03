@@ -1,0 +1,35 @@
+<div class="container">
+    <mat-grid-list cols="2" rowHeight="600px" gutterSize="50px">
+        <mat-grid-tile>
+            <mat-card class="main-card">
+                <img mat-card-image src="assets\img\hombre_pc_1.jpg" width="10" height="500"
+                    alt="modulo de liquidacion">
+                <mat-card-content>
+                    <h1 id="sb">
+                         MODULO DE LIQUIDACION
+                    </h1>
+                    <p>Por favor dar click en "INGRESAR" para continuar en el modulo de liquidacion.</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <a class="button secondary rounded" [routerLink]="['/liquidaciones']" >Ingresar</a> 
+                </mat-card-actions>           
+            </mat-card> 
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="main-card" >
+                <img mat-card-image src="assets\img\camion_2.jpg" width="10" height="500"
+                alt="modulo de conductores">
+                <mat-card-content>
+                    <h1 id="sb">
+                        MODULO DE CONDUCTORES
+                    </h1>
+                    <p>Por favor dar click en "INGRESAR" para continuar en el modulo de conductores.</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <a class="button secondary rounded" [routerLink]="['/conductores']">Ingresar</a>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</div>
