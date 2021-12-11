@@ -23,6 +23,8 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TemplateFormsComponent } from './template-forms/template-forms.component';
 import { ConductoresService } from './conductores/conductores.service';
+import { LiquidacionesListarComponent } from './liquidaciones/liquidaciones-listar/liquidaciones-listar.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ConductoresService } from './conductores/conductores.service';
     FooterComponent,
     ConductoresComponent,
     LiquidacionesComponent,
-    TemplateFormsComponent
+    TemplateFormsComponent,
+    LiquidacionesListarComponent
   ],
   imports: [
   ReactiveFormsModule, 
@@ -49,7 +52,8 @@ import { ConductoresService } from './conductores/conductores.service';
   MatGridListModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
   ],
   providers: [UsuarioService, ConductoresService ],
   bootstrap: [AppComponent]
