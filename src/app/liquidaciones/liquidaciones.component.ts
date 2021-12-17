@@ -5,13 +5,7 @@ import { SolicitudLiquidacion } from './solicitudLiquidacion';
 import { LiquidacionEmpresa } from './liquidacionEmpresa';
 import { LiquidacionVehiculo } from './liquidacionVehiculo';
 import { Router, RouterModule } from '@angular/router';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { FechasLiquidar } from './fechasLiquidar';
 
 @Component({
   selector: 'app-liquidaciones',
@@ -22,9 +16,8 @@ export class LiquidacionesComponent implements OnInit {
 
   solicitudLiquidacion: SolicitudLiquidacion = new SolicitudLiquidacion();
   liquidacionEmpresa: LiquidacionEmpresa | undefined;
-  mesSeleccion = new FormControl();
-  yearSeleccion = new FormControl();
-  mesesLiquidar: string[] = [
+
+  /*mesesLiquidar: string[] = [
     'Enero',
     'Febrero',
     'Marzo',
@@ -37,13 +30,14 @@ export class LiquidacionesComponent implements OnInit {
     'Octubre',
     'Noviembre',
     'Diciembre',
-  ];
-  yearsLiquidar: string[] = ['2018', '2019', '2020', '2021'];
+  ];*/
 
-  constructor(private liquidacionService: LiquidacionesService, private router: Router) {}
+  fechasLiquidar!: FechasLiquidar;
 
-  ejemploVehiculo: LiquidacionVehiculo []= [{placaVehiculo: "VXH321", descuentos: 300000, valorAPagar: 5000000, numeroDescargas: 8 }];
-  ejemploLiquidacion: LiquidacionEmpresa = {nombreEmpresa: "flota huila", mesLiquidacion: "agosto/2021", listaLiquidaciones: this.ejemploVehiculo }
+  constructor(private liquidacionService: LiquidacionesService, private router: Router) {
+    this.liquidacionService.solicitarFechasLiquidar().subscribe(
+      respuesta => this.fechasLiquidar = respuesta.fechasLiquidar);
+      }
     
   liquidacionesForm = new FormGroup({
     nit: new FormControl('', [
@@ -52,6 +46,8 @@ export class LiquidacionesComponent implements OnInit {
       Validators.maxLength(10),
       Validators.pattern('^[0-9]*$'),
     ]),
+    mes: new FormControl('',[Validators.required]),
+    year: new FormControl('',[Validators.required])
   });
 
   nitErrorMessage() {
@@ -70,21 +66,18 @@ export class LiquidacionesComponent implements OnInit {
   onSubmit() {
     console.log(this.liquidacionesForm.value);
     this.solicitudLiquidacion.nit = this.liquidacionesForm.get('nit')?.value;
-    this.solicitudLiquidacion.mes = 8;
-    this.solicitudLiquidacion.ano = 2021;
+    this.solicitudLiquidacion.mes = this.liquidacionesForm.get('mes')?.value;
+    this.solicitudLiquidacion.ano = this.liquidacionesForm.get('year')?.value;
     console.log(this.solicitudLiquidacion);
     this.liquidacionService
-      .getLiquidacionEmpresa(this.solicitudLiquidacion)
+      .solicitarLiquidacionEmpresa(this.solicitudLiquidacion)
       .subscribe(
         (respuesta) =>{
           this.liquidacionService.liquidacionesEmpresa = Object.assign({},respuesta.liquidacionEmpresa);
-          this.router.navigate(['/liquidacionesListar']);
+          this.router.navigate(['liquidaciones/liquidacionesListar']);
          })   
   }
 
-  enviarDato(){
-    //this.liquidacionService.liquidacionesEmpresa = Object.assign({}, this.ejemploLiquidacion);
-  }
 
   ngOnInit(): void {}
 }

@@ -11,7 +11,7 @@ const routes: Routes = [ { path: '', redirectTo: '/home' , pathMatch: 'full'},
 {path:'home' , component: RecolectaComponent},
 {path:'conductores' , component: ConductoresComponent},
 {path:'liquidaciones' , component: LiquidacionesComponent},
-{path:'liquidacionesListar' , component: LiquidacionesListarComponent}
+{path:'liquidaciones/liquidacionesListar' , component: LiquidacionesListarComponent}
 //,{ path: '**' , component: PaginaNoEncontrada}
 ];
 

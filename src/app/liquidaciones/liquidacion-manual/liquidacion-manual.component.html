@@ -1,0 +1,29 @@
+<div class="container liquidaciones">
+  <div class="form">
+    <h1>MODULO DE LIQUIDACION MANUAL</h1>
+    <form [ formGroup] = "liqManualForm" >
+      <label>NIT Empresa</label>
+      <br>
+      <label>Mes a Liquidar</label>
+      <mat-form-field  appearance = "fill" >
+        <mat-label>Mes a liquidar</mat-label>
+        <mat-select  formControlName = "mes" >
+          <mat-option [value]="mes" *ngFor="let mes of fechasLiquidar.mesesLiquidar">{{mes}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <label>Año a Liquidar</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Año a liquidar</mat-label>
+        <mat-select  formControlName = "year" >
+          <mat-option [value]="year" *ngFor="let year of fechasLiquidar.anosLiquidar">{{year}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <br>
+      <a class="button secondary rounded" (click)="onSubmit()">Iniciar Liquidacion</a>
+  
+
+        </form>
+  </div>
+</div>

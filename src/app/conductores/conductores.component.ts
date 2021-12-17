@@ -18,7 +18,7 @@ export class ConductoresComponent implements OnInit {
 
   constructor(private conductorService: ConductoresService) {
     
-    this.conductorService.getTipoResiduos().subscribe(
+    this.conductorService.solicitarTipoResiduos().subscribe(
       respuesta => this.listaTipoResiduos = respuesta.tipoResiduos)
       }  
 
@@ -26,7 +26,6 @@ export class ConductoresComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
- 
  
 
   conductoresForm = new FormGroup({
@@ -105,7 +104,7 @@ export class ConductoresComponent implements OnInit {
     this.solicitudCelda.peso = this.conductoresForm.get('peso')?.value;
     this.solicitudCelda.tipoResiduo = this.conductoresForm.get('tipoResiduo')?.value;
     console.log(this.solicitudCelda);
-    this.conductorService.getCelda(this.solicitudCelda).subscribe(
+    this.conductorService.solicitarCelda(this.solicitudCelda).subscribe(
     respuesta => swal.fire('Vehiculo: '+ respuesta.celdaAsignada.placaAsignada , 'Porfavor descargar en la celda: '+ respuesta.celdaAsignada.celdaAsignada ,'success'));
     }
 

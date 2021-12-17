@@ -16,16 +16,16 @@
             <label>Mes a Liquidar</label>
             <mat-form-field appearance="fill">
                 <mat-label>Mes a liquidar</mat-label>
-                <mat-select  name="mesSeleccion" [formControl]= "mesSeleccion" >
-                    <mat-option [value]="mesSeleccion"  *ngFor="let mes of mesesLiquidar">{{mes}}</mat-option>
+                <mat-select  id="mesSeleccion" type="text"  formControlName= "mes"  >
+                    <mat-option [value]="mes"  *ngFor="let mes of fechasLiquidar.mesesLiquidar">{{mes}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
             <label>Año a Liquidar</label>
             <mat-form-field appearance="fill">
                 <mat-label>Año a liquidar</mat-label>
-                <mat-select name="añoSeleccion" [formControl]= "yearSeleccion">
-                    <mat-option [value]="yearSeleccion"  *ngFor="let year of yearsLiquidar">{{year}}</mat-option>
+                <mat-select formControlName="year" >
+                    <mat-option [value]="year"  *ngFor="let year of fechasLiquidar.anosLiquidar" >{{year}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <br>

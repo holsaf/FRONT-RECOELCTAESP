@@ -25,6 +25,8 @@ import { TemplateFormsComponent } from './template-forms/template-forms.componen
 import { ConductoresService } from './conductores/conductores.service';
 import { LiquidacionesListarComponent } from './liquidaciones/liquidaciones-listar/liquidaciones-listar.component';
 import {MatTableModule} from '@angular/material/table';
+import { LiquidacionesService } from './liquidaciones/liquidaciones.service';
+import { LiquidacionManualComponent } from './liquidaciones/liquidacion-manual/liquidacion-manual.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {MatTableModule} from '@angular/material/table';
     ConductoresComponent,
     LiquidacionesComponent,
     TemplateFormsComponent,
-    LiquidacionesListarComponent
+    LiquidacionesListarComponent,
+    LiquidacionManualComponent
   ],
   imports: [
   ReactiveFormsModule, 
@@ -55,7 +58,7 @@ import {MatTableModule} from '@angular/material/table';
   MatInputModule,
   MatTableModule
   ],
-  providers: [UsuarioService, ConductoresService ],
+  providers: [UsuarioService, ConductoresService, LiquidacionesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
