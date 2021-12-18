@@ -17,20 +17,6 @@ export class LiquidacionesComponent implements OnInit {
   solicitudLiquidacion: SolicitudLiquidacion = new SolicitudLiquidacion();
   liquidacionEmpresa: LiquidacionEmpresa | undefined;
 
-  /*mesesLiquidar: string[] = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre',
-  ];*/
 
   fechasLiquidar!: FechasLiquidar;
 
@@ -66,7 +52,7 @@ export class LiquidacionesComponent implements OnInit {
   onSubmit() {
     console.log(this.liquidacionesForm.value);
     this.solicitudLiquidacion.nit = this.liquidacionesForm.get('nit')?.value;
-    this.solicitudLiquidacion.mes = this.liquidacionesForm.get('mes')?.value;
+    this.solicitudLiquidacion.mes = this.liquidacionService.mesesDelAño.indexOf(this.liquidacionesForm.get('mes')?.value);
     this.solicitudLiquidacion.ano = this.liquidacionesForm.get('year')?.value;
     console.log(this.solicitudLiquidacion);
     this.liquidacionService
@@ -76,6 +62,10 @@ export class LiquidacionesComponent implements OnInit {
           this.liquidacionService.liquidacionesEmpresa = Object.assign({},respuesta.liquidacionEmpresa);
           this.router.navigate(['liquidaciones/liquidacionesListar']);
          })   
+  }
+
+  irLiquidacionManual(){
+    console.log('enrutando a liqmanual');
   }
 
 

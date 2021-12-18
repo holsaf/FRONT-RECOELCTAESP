@@ -1,29 +1,36 @@
 <div class="container liquidaciones">
   <div class="form">
     <h1>MODULO DE LIQUIDACION MANUAL</h1>
-    <form [ formGroup] = "liqManualForm" >
-      <label>NIT Empresa</label>
-      <br>
-      <label>Mes a Liquidar</label>
-      <mat-form-field  appearance = "fill" >
-        <mat-label>Mes a liquidar</mat-label>
-        <mat-select  formControlName = "mes" >
-          <mat-option [value]="mes" *ngFor="let mes of fechasLiquidar.mesesLiquidar">{{mes}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <form [formGroup]="liqManualForm">
       <br>
       <label>Año a Liquidar</label>
       <mat-form-field appearance="fill">
-        <mat-label>Año a liquidar</mat-label>
-        <mat-select  formControlName = "year" >
-          <mat-option [value]="year" *ngFor="let year of fechasLiquidar.anosLiquidar">{{year}}</mat-option>
+        <mat-label>Ingrese el año</mat-label>
+        <input matInput id="anoLiqManual" type="number" formControlName="anoLiqManual" maxlength="4">
+        <mat-error *ngIf="liqManualForm.get('anoLiqManual')?.invalid">
+          <!--Validaciones-->
+          {{nitErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <a class="button secondary rounded" 
+      (click)="solicitarMesesLiqManual(this.liqManualForm.get('anoLiqManual')?.value)">
+      Consultar</a>
+      <br>
+      <div *ngIf="this.mesesLiqManual.length>0"> 
+      <label>Mes a Liquidar</label>
+      <mat-form-field appearance="fill" >
+        <mat-label>Mes a liquidar</mat-label>
+        <mat-select formControlName="mesLiqManual">
+          <mat-option [value]="mes" *ngFor="let mes of mesesLiqManual">{{mes}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
-      <br>
-      <a class="button secondary rounded" (click)="onSubmit()">Iniciar Liquidacion</a>
-  
+      <a class="button secondary rounded" (click)="onSubmit()" *ngIf="liqManualForm.get('mesLiqManual')?.valid" >Iniciar Liquidacion</a>
+    </div>
 
-        </form>
+      
+    </form>
+
   </div>
 </div>

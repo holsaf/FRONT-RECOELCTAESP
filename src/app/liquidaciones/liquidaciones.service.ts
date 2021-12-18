@@ -12,15 +12,33 @@ import { SolicitudLiqManual } from './solicitudLiqManual';
   providedIn: 'root',
 })
 export class LiquidacionesService {
+
   private urlLiquidacionEmpresa: string =
     'http://localhost:8080/liquidaciones/liquidarEmpresa';
   private urlFechasLiquidar: string =
     'http://localhost:8080/liquidaciones/fechasLiquidar';
   private urlLiquidarManual: string =
     'http://localhost:8080/liquidaciones/liquidacionManual';
+    private urlMesesLiqManual: string =
+    'http://localhost:8080/liquidaciones/mesesLiqManual';
   
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
+  
+  public mesesDelAño: String[] = ['CERO',
+    'ENERO',
+    'FEBRERO',
+    'MARZO',
+    'ABRIL',
+    'MAYO',
+    'JUNIO',
+    'JULIO',
+    'AGOSTO',
+    'SEPTIEMBRE',
+    'OCTUBRE',
+    'NOVIEMBRE',
+    'DICIEMBRE',
+  ];
 
   constructor(private http: HttpClient) {}
 
@@ -58,5 +76,15 @@ export class LiquidacionesService {
 
   solicitarFechasLiquidar(): Observable<any> {
     return this.http.get(this.urlFechasLiquidar);
+  }
+
+  solicitarMesesLiqManual(anoLiqManual: number): Observable <any> {
+    return this.http.get(this.urlMesesLiqManual +
+      `?anoLiqManual=${anoLiqManual}`).pipe(
+    catchError((e) => {
+      swal.fire('Error al solicitar Liquidacion', e.error.mensaje, 'error');
+      return throwError(e);
+    })
+  );
   }
 }
