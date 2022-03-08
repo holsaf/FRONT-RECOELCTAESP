@@ -25,7 +25,6 @@ import { ConductoresService } from './conductores/conductores.service';
 import { LiquidacionesListarComponent } from './liquidaciones/liquidaciones-listar/liquidaciones-listar.component';
 import {MatTableModule} from '@angular/material/table';
 import { LiquidacionesService } from './liquidaciones/liquidaciones.service';
-import { LiquidacionManualComponent } from './liquidaciones/liquidacion-manual/liquidacion-manual.component';
 import { VehiculosAdminComponent } from './vehiculosAdmin/vehiculosAdmin.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { VehiculosAdminService } from './vehiculosAdmin/vehiculosAdmin.service';
@@ -41,7 +40,6 @@ import { VehiculosAdminCrearComponent } from './vehiculosAdmin/vehiculosAdmin-cr
     ConductoresComponent,
     LiquidacionesComponent,
     LiquidacionesListarComponent,
-    LiquidacionManualComponent,
     VehiculosAdminComponent,
     AdministradorComponent,
     VehiculosAdminCrearComponent,
