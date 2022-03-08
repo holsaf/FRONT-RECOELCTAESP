@@ -12,21 +12,19 @@ import  swal  from 'sweetalert2';
 })
 export class ConductoresComponent implements OnInit {
 
+  private errores: string[] = [];
   listaTipoResiduos: String [] = [];
   solicitudCelda: SolicitudCelda = new SolicitudCelda;
-  residuoSeleccion = new FormControl;
+  private residuoSeleccion = new FormControl;
 
   constructor(private conductorService: ConductoresService) {
-    
+
     this.conductorService.solicitarTipoResiduos().subscribe(
       respuesta => this.listaTipoResiduos = respuesta.tipoResiduos)
       }  
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
- 
 
   conductoresForm = new FormGroup({
     cedula: new FormControl('', [
@@ -40,12 +38,12 @@ export class ConductoresComponent implements OnInit {
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(8),
-      Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
+      Validators.pattern('^[A-Z0-9]*$'),
     ]),
     peso: new FormControl('', [
       Validators.required,
-      Validators.min(1000),
-      Validators.max(100000),
+      Validators.min(10000),
+      Validators.max(30000),
       Validators.pattern('^[0-9]*$'),
     ]),
 
@@ -65,7 +63,7 @@ export class ConductoresComponent implements OnInit {
     } else if (this.conductoresForm.get('placa')?.hasError('maxlength')) {
       return 'Ingrese una placa de 5 a 8 caracteres, sin guiones ni espacios.';
     } else if (this.conductoresForm.get('placa')?.hasError('pattern')) {
-      return 'Ingrese una placa de 5 a 8 caracteres, solo letras y numeros.';
+      return 'Ingrese una placa valida, solo letras y numeros.';
     }
     return null;
   }
@@ -87,11 +85,11 @@ export class ConductoresComponent implements OnInit {
     if (this.conductoresForm.get('peso')?.hasError('required')) {
       return 'Porfavor ingrese el peso del vehiculo';
     } else if (this.conductoresForm.get('peso')?.hasError('min')) {
-      return 'Ingrese un numero entre 1000 y 100000, sin letras ni espacios.';
+      return 'Ingrese un numero minimo de 10000, sin letras ni espacios.';
     } else if (this.conductoresForm.get('peso')?.hasError('max')) {
-      return 'Ingrese un numero entre 1000 y 100000, sin letras ni espacios.';
+      return 'Ingrese un numero maximo de 30000, sin letras ni espacios.';
     } else if (this.conductoresForm.get('peso')?.hasError('pattern')) {
-      return 'Ingrese un numero entre 1000 y 100000, sin letras ni espacios.';
+      return 'Ingrese un numero entre 10000 y 30000, sin letras ni espacios.';
     }
     return null;
   }
@@ -105,7 +103,14 @@ export class ConductoresComponent implements OnInit {
     this.solicitudCelda.tipoResiduo = this.conductoresForm.get('tipoResiduo')?.value;
     console.log(this.solicitudCelda);
     this.conductorService.solicitarCelda(this.solicitudCelda).subscribe(
-    respuesta => swal.fire('Vehiculo: '+ respuesta.celdaAsignada.placaAsignada , 'Porfavor descargar en la celda: '+ respuesta.celdaAsignada.celdaAsignada ,'success'));
+    respuesta => swal.fire('Vehiculo: '+ respuesta.celdaAsignada.placaAsignada,
+    ' Porfavor descargar en la celda: '+ respuesta.celdaAsignada.celdaAsignada 
+    ,'success')/*,
+      err => {
+        this.errores = err.error.errors as string[];
+        console.error(err.error.errors)
+      }*/
+    );
     }
 
   

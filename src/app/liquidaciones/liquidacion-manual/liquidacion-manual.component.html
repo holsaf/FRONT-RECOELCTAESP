@@ -1,7 +1,7 @@
 <div class="container liquidaciones">
   <div class="form">
     <h1>MODULO DE LIQUIDACION MANUAL</h1>
-    <form [formGroup]="liqManualForm">
+    <form [formGroup]= "liqManualForm" >
       <br>
       <label>Año a Liquidar</label>
       <mat-form-field appearance="fill">
@@ -13,7 +13,7 @@
         </mat-error>
       </mat-form-field>
       <br>
-      <a class="button secondary rounded" 
+      <a *ngIf="liqManualForm.get('anoLiqManual')?.valid" class="button secondary rounded" 
       (click)="solicitarMesesLiqManual(this.liqManualForm.get('anoLiqManual')?.value)">
       Consultar</a>
       <br>

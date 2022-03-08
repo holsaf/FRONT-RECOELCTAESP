@@ -1,6 +1,3 @@
-import { NgSwitchCase } from "@angular/common";
-import { MesesEnum } from "./MesesEnum.enum";
-
 export class SolicitudLiquidacion {
 
 

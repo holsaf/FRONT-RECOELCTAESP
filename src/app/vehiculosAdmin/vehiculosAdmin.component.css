@@ -1,0 +1,66 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin: auto;
+  }
+  
+  .container.conductores {
+    /*background-image: url();
+    background-size: cover;
+    background-color: rgb(145, 135, 135);
+    background-blend-mode: lighten;*/
+    border: 1px solid #000000;
+    box-sizing: border-box;
+  }
+  
+  .form{
+      color: black;
+      font-size: 1.2em;
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      padding: auto;
+      text-align: center;
+      font-weight: 500;
+  }
+  
+  .form.title {
+    color: #016d38;
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 24px;
+  }
+  
+  .button {
+      font-family: Roboto Condensed,sans-serif;
+      font-size: 1rem;
+      padding: .5rem 1.9rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      line-height: 1;
+      outline: none;
+      box-shadow: 0 2px 2px 0 #00000040;
+      text-transform: uppercase;
+      transition: .3s ease;
+      text-decoration: none;
+  }
+  
+  .button.secondary {
+      background: transparent;
+      color: black;
+      border: 1px solid white;
+  }
+  
+  .button.rounded {
+      border-radius: 2.1rem;
+  }
+  

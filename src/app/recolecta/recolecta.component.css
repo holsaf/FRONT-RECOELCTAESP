@@ -1,8 +1,10 @@
+
 .container {
   width: auto;
   padding-left: 5rem;
   padding-right: 5rem;
   padding-top: 2rem;
+  padding-bottom: 2rem;
   margin: auto;
   
 }
@@ -49,5 +51,4 @@
     font-weight: 700;
     color: #016d38;
 }
-
 

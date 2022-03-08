@@ -1,0 +1,137 @@
+<div class="container conductores">
+    <div class="form">
+        <h1 class="form title">Administracion de Vehiculos</h1>
+        <a [routerLink]="['/vehiculosAdminCrear']" class="button secondary rounded">
+           Crear Vehiculo
+        </a>
+        <form [formGroup]="vehiculosAdminForm1" (ngSubmit)="solicitarVehiculo()">
+            <br>
+            <label>Placa a Consultar</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Placa del Vehiculo a consultar</mat-label>
+                <input matInput id="cedula" type="text" formControlName="placa" maxlength="8">
+                <mat-error *ngIf="vehiculosAdminForm1.get('placa')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <button type="submit" [disabled]="!vehiculosAdminForm1.valid" class="button secondary rounded">
+                Consultar
+            </button>
+            <br>
+        </form>
+    </div>
+    <div class="form" *ngIf="vehiculo.pesoVehiculo>0">
+        <form [formGroup]="vehiculosAdminForm" (ngSubmit)="actualizarVehiculo()">
+            <label>Empresa NIT</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Nit de la Empresa</mat-label>
+                <input matInput id="nit" type="text" formControlName="nit" maxlength="10"
+                    [(ngModel)]="vehiculo.nitEmpresa">
+                <mat-error *ngIf="vehiculosAdminForm.get('nit')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Placa Vehiculo</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Placa del Vehiculo</mat-label>
+                <input matInput id="placa2" type="text" formControlName="placa2" maxlength="8"
+                    [(ngModel)]="vehiculo.placaVehiculo" readonly>
+                <mat-error *ngIf="vehiculosAdminForm.get('placa2')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Peso Vehiculo</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Peso en Kg del Vehiculo</mat-label>
+                <input matInput id="peso" type="text" formControlName="peso" [(ngModel)]="vehiculo.pesoVehiculo">
+                <mat-error *ngIf="vehiculosAdminForm.get('peso')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <button type="submit" (click)="actualizarVehiculo()" class="button secondary rounded"
+            [disabled]="!vehiculosAdminForm.valid">
+            Actualizar
+        </button>
+        <!--<button (click)="eliminarVehiculo()" class="button secondary rounded">
+    Eliminar
+</button>-->
+    </div>
+    <div class="form" *ngIf="vehiculo.pesoVehiculo>0">
+        <form [formGroup]="vehiculosAdminForm" (ngSubmit)="actualizarVehiculo()">
+            <label>Cap. Comercial</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Capacidad Comercial</mat-label>
+                <input matInput id="cedula" type="text" formControlName="capComercial"
+                    [(ngModel)]="vehiculo.capComercial">
+                <mat-error *ngIf="vehiculosAdminForm.get('capComercial')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Cap. Domiciliaria</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Capacidad Domiciliaria</mat-label>
+                <input matInput id="cedula" type="text" formControlName="capDomiciliaria"
+                    [(ngModel)]="vehiculo.capDomiciliaria">
+                <mat-error *ngIf="vehiculosAdminForm.get('capDomiciliaria')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Cap. Agricola</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Capacidad Agricola</mat-label>
+                <input matInput id="cedula" type="text" formControlName="capAgricola"
+                    [(ngModel)]="vehiculo.capAgricola">
+                <mat-error *ngIf="vehiculosAdminForm.get('capAgricola')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Cap. Biomedico</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Capacidad Biomedica</mat-label>
+                <input matInput id="cedula" type="text" formControlName="capBiomedico"
+                    [(ngModel)]="vehiculo.capBiomedico">
+                <mat-error *ngIf="vehiculosAdminForm.get('capBiomedica')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Cap. Industrial</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Capacidad Industrial</mat-label>
+                <input matInput id="cedula" type="text" formControlName="capIndustrial"
+                    [(ngModel)]="vehiculo.capIndustrial">
+                <mat-error *ngIf="vehiculosAdminForm.get('capIndustrial')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <label>Cap. Construccion</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Capacidad Construccion</mat-label>
+                <input matInput id="cedula" type="text" formControlName="capConstruccion"
+                    [(ngModel)]="vehiculo.capConstruccion">
+                <mat-error *ngIf="vehiculosAdminForm.get('capConstruccion')?.invalid">
+                    <!--Validaciones-->
+                    {{placaErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+        </form>
+
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+[33mcommit bb6467e9af6f2d273f25c96bfe0f8b442d8c6d52[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: holsaf <hol.tk@hotmail.com>
+Date:   Sat Dec 18 01:20:33 2021 -0500
+
+    sistema funcionando con todas las vistas y rutas, falta activar la seguridad de las rutas
+
+[33mcommit 337bd9dc9dc521f9b889018208314eeb13a2c2bc[m
+Author: holsaf <hol.tk@hotmail.com>
+Date:   Fri Dec 17 12:59:00 2021 -0500
+
+    vista liq en desarrollo
+
+[33mcommit 00baf8fd38504dbbbc170efc520020bc341900dd[m
+Author: holsaf <hol.tk@hotmail.com>
+Date:   Sat Dec 11 08:14:09 2021 -0500
+
+    sistema funcionando con listar liquidacion con la API
+
+[33mcommit d72fa3dc8aa2ca1f9cfa5f158de7cbb14dd16680[m
+Author: Holman Sanchez <hol.tk@hotmail.com>
+Date:   Fri Dec 3 17:29:27 2021 -0500
+
+    version 1 sistema RECOLECTAESP

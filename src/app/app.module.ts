@@ -4,8 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { UsuarioService } from './usuarios/usuario.service';
 import { RecolectaComponent } from './recolecta/recolecta.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -23,29 +21,34 @@ import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSortModule} from '@angular/material/sort';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TemplateFormsComponent } from './template-forms/template-forms.component';
 import { ConductoresService } from './conductores/conductores.service';
 import { LiquidacionesListarComponent } from './liquidaciones/liquidaciones-listar/liquidaciones-listar.component';
 import {MatTableModule} from '@angular/material/table';
 import { LiquidacionesService } from './liquidaciones/liquidaciones.service';
 import { LiquidacionManualComponent } from './liquidaciones/liquidacion-manual/liquidacion-manual.component';
+import { VehiculosAdminComponent } from './vehiculosAdmin/vehiculosAdmin.component';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { VehiculosAdminService } from './vehiculosAdmin/vehiculosAdmin.service';
+import { VehiculosAdminCrearComponent } from './vehiculosAdmin/vehiculosAdmin-crear/vehiculosAdmin-crear.component';
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     LoginComponent,
-    UsuariosComponent,
     RecolectaComponent,
     HeaderComponent,
     FooterComponent,
     ConductoresComponent,
     LiquidacionesComponent,
-    TemplateFormsComponent,
     LiquidacionesListarComponent,
-    LiquidacionManualComponent
-  ],
+    LiquidacionManualComponent,
+    VehiculosAdminComponent,
+    AdministradorComponent,
+    VehiculosAdminCrearComponent,
+   ],
   imports: [
-  ReactiveFormsModule, 
+  
+ReactiveFormsModule, 
   BrowserModule,
   HttpClientModule,
   AppRoutingModule,
@@ -62,7 +65,7 @@ import { LiquidacionManualComponent } from './liquidaciones/liquidacion-manual/l
   MatPaginatorModule,
   MatSortModule
   ],
-  providers: [UsuarioService, ConductoresService, LiquidacionesService ],
+  providers: [ConductoresService, LiquidacionesService, VehiculosAdminService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

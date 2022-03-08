@@ -14,10 +14,10 @@ import { FechasLiquidar } from './fechasLiquidar';
 })
 export class LiquidacionesComponent implements OnInit {
 
+  ngOnInit(): void {}
+
   solicitudLiquidacion: SolicitudLiquidacion = new SolicitudLiquidacion();
   liquidacionEmpresa: LiquidacionEmpresa | undefined;
-
-
   fechasLiquidar!: FechasLiquidar;
 
   constructor(private liquidacionService: LiquidacionesService, private router: Router) {
@@ -28,7 +28,7 @@ export class LiquidacionesComponent implements OnInit {
   liquidacionesForm = new FormGroup({
     nit: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(9),
       Validators.maxLength(10),
       Validators.pattern('^[0-9]*$'),
     ]),
@@ -40,9 +40,9 @@ export class LiquidacionesComponent implements OnInit {
     if (this.liquidacionesForm.get('nit')?.hasError('required')) {
       return 'Porfavor ingrese el NIT de la empresa, sin codigo de verificacion';
     } else if (this.liquidacionesForm.get('nit')?.hasError('minlength')) {
-      return 'Ingrese un numero de 10 digitos, sin guiones ni espacios.';
+      return 'Ingrese un numero de minimo de 9 digitos, sin guiones ni espacios.';
     } else if (this.liquidacionesForm.get('nit')?.hasError('maxlength')) {
-      return 'Ingrese un numero de 10 digitos, sin guiones ni espacios.';
+      return 'Ingrese un numero de maximo de 10 digitos, sin guiones ni espacios.';
     } else if (this.liquidacionesForm.get('nit')?.hasError('pattern')) {
       return 'Ingrese un numero de 10 digitos, sin guiones ni espacios.';
     }
@@ -50,7 +50,7 @@ export class LiquidacionesComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.liquidacionesForm.value);
+    
     this.solicitudLiquidacion.nit = this.liquidacionesForm.get('nit')?.value;
     this.solicitudLiquidacion.mes = this.liquidacionService.mesesDelAño.indexOf(this.liquidacionesForm.get('mes')?.value);
     this.solicitudLiquidacion.ano = this.liquidacionesForm.get('year')?.value;
@@ -64,10 +64,5 @@ export class LiquidacionesComponent implements OnInit {
          })   
   }
 
-  irLiquidacionManual(){
-    console.log('enrutando a liqmanual');
-  }
 
-
-  ngOnInit(): void {}
 }

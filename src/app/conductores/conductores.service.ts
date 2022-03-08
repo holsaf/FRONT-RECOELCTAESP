@@ -5,8 +5,9 @@ import { catchError } from 'rxjs/operators';
 import { SolicitudCelda } from './solicitudCelda';
 import swal from 'sweetalert2';
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ConductoresService {
 
   private urlSolicitudCelda: string = 'http://localhost:8080/conductores/celdaDescarga';
@@ -18,6 +19,10 @@ export class ConductoresService {
   solicitarCelda( solicitudCelda : SolicitudCelda): Observable<any> {
     return this.http.post(this.urlSolicitudCelda , solicitudCelda, {headers: this.httpHeaders}).pipe(
       catchError(e =>{
+        if(e.status==400){
+          return throwError(e);
+        }
+        console.error(e.error.mensaje);
         swal.fire('Error al digitar', e.error.mensaje, 'error');
         return throwError(e);
       }));

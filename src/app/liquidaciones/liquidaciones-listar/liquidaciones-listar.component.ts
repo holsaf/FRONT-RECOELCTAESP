@@ -1,11 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LiquidacionEmpresa } from '../liquidacionEmpresa';
 import { LiquidacionesService } from '../liquidaciones.service';
-import { LiquidacionVehiculo } from './../liquidacionVehiculo';
-import {AfterViewInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+
 
 
 @Component({
@@ -31,7 +27,7 @@ export class LiquidacionesListarComponent implements OnInit {
 
   solicitarTotalPagar(): number{
     return this.liquidacionEmpresa.listaLiquidaciones.
-    reduce((sum, value)=> sum + value.valorAPagar, 0);
+    reduce((sum, value)=> sum + (value.valorAPagar - value.descuentos), 0);
   }
   
 

@@ -26,8 +26,11 @@
                     <p>Por favor dar click en "INGRESAR" para continuar en el modulo de conductores.</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <a class="button secondary rounded" [routerLink]="['/conductores']">Ingresar</a>
+                    <a id="condButton" class="button secondary rounded" [routerLink]="['/conductores']">Ingresar</a>
                 </mat-card-actions>
+                <!--<mat-card-actions>
+                    <a class="button secondary rounded" (click)="notificarRegistrar()">¿No estas registrado?</a>
+                </mat-card-actions>-->
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>

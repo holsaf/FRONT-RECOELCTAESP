@@ -25,13 +25,13 @@
             <mat-form-field appearance="fill">
                 <mat-label>Año a liquidar</mat-label>
                 <mat-select formControlName="year" >
-                    <mat-option [value]="year"  *ngFor="let year of fechasLiquidar.anosLiquidar" >{{year}}</mat-option>
+                    <mat-option [value]="ano"  *ngFor="let ano of fechasLiquidar.anosLiquidar" >{{ano}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
             <br>
-            <a class="button secondary rounded" (click)="onSubmit()" >Liquidar</a>
-            <a class="button secondary rounded" [routerLink]= "['/liquidacionManual']" >Liquidacion manual</a>
+            <button class="button secondary rounded" [disabled]="!liquidacionesForm.valid" type="submit" >Liquidar</button>
+            <a class="button secondary rounded" [routerLink] = "['/liquidacionManual']" >Liquidacion manual</a>
         </form>
     </div>
 </div>
