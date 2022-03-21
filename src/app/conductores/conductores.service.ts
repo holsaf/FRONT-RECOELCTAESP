@@ -10,8 +10,8 @@ import swal from 'sweetalert2';
 })
 export class ConductoresService {
 
-  private urlSolicitudCelda: string = 'http://localhost:8080/conductores/celdaDescarga';
-  private urlTipoResiduosDisponibles: string = 'http://localhost:8080/conductores/tipoResiduos';
+  private urlSolicitudCelda: string = 'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/conductores/celdaDescarga';
+  private urlTipoResiduosDisponibles: string = 'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/conductores/tipoResiduos';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http : HttpClient) { }

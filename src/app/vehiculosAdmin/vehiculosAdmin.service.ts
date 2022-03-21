@@ -10,17 +10,17 @@ import { Vehiculo } from './vehiculo';
 })
 export class VehiculosAdminService {
   private urlSolicitarVehiculo: string =
-    'http://localhost:8080/vehiculos/vehiculo';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/vehiculos/vehiculo';
   
 
   private urlCrearVehiculo: string =
-    'http://localhost:8080/vehiculos/crearVehiculo';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/vehiculos/crearVehiculo';
 
   private urlActualizarVehiculo: string =
-    'http://localhost:8080/vehiculos/actualizarVehiculo';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/vehiculos/actualizarVehiculo';
 
   private urlEliminarVehiculo: string =
-    'http://localhost:8080/vehiculos/borrarVehiculo';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/vehiculos/borrarVehiculo';
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 

@@ -14,13 +14,13 @@ import { SolicitudLiqManual } from './solicitudLiqManual';
 export class LiquidacionesService {
 
   private urlLiquidacionEmpresa: string =
-    'http://localhost:8080/liquidaciones/liquidarEmpresa';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/liquidaciones/liquidarEmpresa';
   private urlFechasLiquidar: string =
-    'http://localhost:8080/liquidaciones/fechasLiquidar';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/liquidaciones/fechasLiquidar';
   private urlLiquidarManual: string =
-    'http://localhost:8080/liquidaciones/liquidacionManual';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/liquidaciones/liquidacionManual';
     private urlMesesLiqManual: string =
-    'http://localhost:8080/liquidaciones/mesesLiqManual';
+    'http://ec2-3-17-152-104.us-east-2.compute.amazonaws.com:8080/liquidaciones/mesesLiqManual';
   
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 

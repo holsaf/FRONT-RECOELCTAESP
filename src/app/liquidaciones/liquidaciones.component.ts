@@ -58,7 +58,7 @@ export class LiquidacionesComponent implements OnInit {
     this.liquidacionService
       .solicitarLiquidacionEmpresa(this.solicitudLiquidacion)
       .subscribe(
-        (respuesta) =>{
+        (respuesta) => {
           this.liquidacionService.liquidacionesEmpresa = Object.assign({},respuesta.liquidacionEmpresa);
           this.router.navigate(['liquidaciones/liquidacionesListar']);
          })   
